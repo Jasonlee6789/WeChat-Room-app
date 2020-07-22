@@ -5,12 +5,10 @@ const socket = io("ws://localhost:3000");
 //send 发射 定义的chatMessage 和对用的值client
 // socket.emit("chatMessage", "client");
 
-const urlSearchParams = new URLSearchParams(location.search);
-const username = urlSearchParams.get("username");
+const urlSearchParams = new URLSearchParams(location.href);
+const usename = urlSearchParams.get("username");
 //登录
-socket.emit("joinChatRoom", {
-  username,
-});
+socket.emit("joinChatRoom", {});
 
 //1。获取输入信息框点击等
 const sendBtn = document.querySelector("#sendBtn");
@@ -26,12 +24,10 @@ sendBtn.onclick = () => {
 
 socket.on("message", (data) => {
   // render the data div
-  const { msg, username } = data;
-  console.log(username);
   const messageDiv = document.createElement("div");
 
   messageDiv.classList.add("message");
-  messageDiv.innerHTML = `<p class="meta">${username}</p><p>${msg}</p>`;
+  messageDiv.innerHTML = `<p>${data}</p>`;
 
   const container = document.querySelector(".chat-messages");
   container.appendChild(messageDiv);

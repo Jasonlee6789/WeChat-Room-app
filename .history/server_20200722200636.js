@@ -22,17 +22,13 @@ io.on("connection", (socket) => {
   socket.on("chatMessage", (data) => {
     console.log(data);
 
-    //通过id找到是谁登录的
+    //id
     const userInfo = users.findUser(socket.id);
 
     if (userInfo) {
       const { username } = userInfo;
       //通知广播所有的连接用户
-      io.emit("message", {
-        username,
-        msg: data,
-        // timer: Datenow().getDate(),
-      });
+      io.emit("message", data);
     }
   });
 });

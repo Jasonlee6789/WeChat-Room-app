@@ -26,12 +26,12 @@ sendBtn.onclick = () => {
 
 socket.on("message", (data) => {
   // render the data div
-  const { msg, username } = data;
+  const { msg, username, timer } = data;
   console.log(username);
   const messageDiv = document.createElement("div");
 
   messageDiv.classList.add("message");
-  messageDiv.innerHTML = `<p class="meta">${username}</p><p>${msg}</p>`;
+  messageDiv.innerHTML = `<p class="meta">${username}</p><p>${msg}</p><p>${timer}</p>`;
 
   const container = document.querySelector(".chat-messages");
   container.appendChild(messageDiv);

@@ -22,7 +22,7 @@ io.on("connection", (socket) => {
   socket.on("chatMessage", (data) => {
     console.log(data);
 
-    //通过id找到是谁登录的
+    //id
     const userInfo = users.findUser(socket.id);
 
     if (userInfo) {
