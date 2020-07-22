@@ -7,7 +7,7 @@ const socket = io("ws://localhost:3000");
 
 const urlSearchParams = new URLSearchParams(location.search);
 const username = urlSearchParams.get("username");
-let timer;
+let timer = Date.now();
 //登录
 socket.emit("joinChatRoom", {
   username,
@@ -21,8 +21,8 @@ sendBtn.onclick = () => {
   console.log(msgInput.value);
   //2、把值发送给后端
   socket.emit("chatMessage", {
-    msgInput: msgInput.value,
-    timer: Date.now(),
+    msgInput.value,
+    timer
   });
   msgInput.value = "";
   return false;
@@ -30,12 +30,12 @@ sendBtn.onclick = () => {
 
 socket.on("message", (data) => {
   // render the data div
-  const { msg, username, time } = data;
+  const { msg, username } = data;
   console.log(username);
   const messageDiv = document.createElement("div");
 
   messageDiv.classList.add("message");
-  messageDiv.innerHTML = `<p class="meta">${username}</p><p>${time}</p><p>${msg}</p>`;
+  messageDiv.innerHTML = `<p class="meta">${username}</p><p>${msg}</p>`;
 
   const container = document.querySelector(".chat-messages");
   container.appendChild(messageDiv);

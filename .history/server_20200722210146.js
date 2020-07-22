@@ -19,19 +19,19 @@ io.on("connection", (socket) => {
     users.addUser(socket.id, data);
   });
 
-  socket.on("chatMessage", (data) => {
-    console.log(data);
+  socket.on("chatMessage", (msgInput, timer) => {
+    console.log(timer);
 
     //通过id找到是谁登录的
     const userInfo = users.findUser(socket.id);
-    data.timer = getDate();
+
     if (userInfo) {
       const { username } = userInfo;
       //通知广播所有的连接用户
       io.emit("message", {
         username,
-        msg: data.msgInput,
-        time: data.timer,
+        msg: msgInput,
+        // timer: Date.now().getDate(),
       });
     }
   });
