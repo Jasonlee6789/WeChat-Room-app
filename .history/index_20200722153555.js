@@ -10,7 +10,10 @@ const server = http.createServer(app.callback());
 const io = require("socket.io")(server);
 
 io.on("connection", (client) => {
-  console.log("hi");
+  console.log("hi你已经触发了我这个新手服务器哦");
+  socket.on("chatMessage", (data) => {
+    console.log("data");
+  });
 });
 
 function getDate() {
