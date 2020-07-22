@@ -14,8 +14,7 @@ io.on("connection", (socket) => {
 
   socket.on("chatMessage", (data) => {
     console.log(data);
-    //通知广播所有的连接用户
-    io.emit("message", data);
+    //通知所有的连接用户
   });
 });
 

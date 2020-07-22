@@ -9,21 +9,10 @@ const socket = io("ws://localhost:3000");
 const sendBtn = document.querySelector("#sendBtn");
 const msgInput = document.querySelector("#msg");
 
-sendBtn.onclick = () => {
+sendBtn.onClick = () => {
   console.log(msgInput.value);
   //2、把值发送给后端
   socket.emit("chatMessage", msgInput.value);
   msgInput.value = "";
   return false;
 };
-
-socket.on("message", (data) => {
-  // render the data div
-  const messageDiv = document.createElement("div");
-
-  messageDiv.classList.add("message");
-  messageDiv.innerHTML = `<p>${data}</p>`;
-
-  const container = document.querySelector(".chat-messages");
-  container.appendChild(messageDiv);
-});

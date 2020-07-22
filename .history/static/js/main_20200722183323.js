@@ -21,9 +21,5 @@ socket.on("message", (data) => {
   // render the data div
   const messageDiv = document.createElement("div");
 
-  messageDiv.classList.add("message");
-  messageDiv.innerHTML = `<p>${data}</p>`;
-
-  const container = document.querySelector(".chat-messages");
-  container.appendChild(messageDiv);
+  messageDiv.innerHTML = "<p>${data}</p>";
 });
