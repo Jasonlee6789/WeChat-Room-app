@@ -40,7 +40,6 @@ io.on("connection", (socket) => {
       });
     }
   });
-
   socket.on("chatMessage", (data) => {
     console.log(data);
 

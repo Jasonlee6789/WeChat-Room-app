@@ -29,17 +29,6 @@ io.on("connection", (socket) => {
       msg: `${username} has stepped into WeChat Room`,
     });
   });
-  //当用户进来的时候 ,其他的用户收到  XX 加入聊天室
-  socket.on("disconnect", () => {
-    const { username } = data;
-    const userInfo = users.findUser(socket.id);
-    if (userInfo) {
-      socket.broadcast.emit("message", {
-        username: "李靖",
-        msg: `${username} has stepped out WeChat Room`,
-      });
-    }
-  });
 
   socket.on("chatMessage", (data) => {
     console.log(data);

@@ -36,7 +36,7 @@ socket.on("message", (data) => {
 
   messageDiv.classList.add("message");
   messageDiv.innerHTML = `<p class="meta">${
-    username + "    " + time
+    username + "  " + time
   }</p><p>${msg}</p>`;
 
   const container = document.querySelector(".chat-messages");

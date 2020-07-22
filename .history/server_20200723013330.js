@@ -17,28 +17,8 @@ io.on("connection", (socket) => {
     console.log(socket.id);
     //存储了加入聊天的用户
     users.addUser(socket.id, data);
-    //当用户进来的时候 ，当前的用户收到  欢迎加入聊天室
-    socket.emit("message", {
-      username: "李靖",
-      msg: "Welcome to WeChat Room",
-    });
-    //其他的用户收到  XX 加入聊天室
-    const { username } = data;
-    socket.broadcast.emit("message", {
-      username: "李靖",
-      msg: `${username} has stepped into WeChat Room`,
-    });
-  });
-  //当用户进来的时候 ,其他的用户收到  XX 加入聊天室
-  socket.on("disconnect", () => {
-    const { username } = data;
-    const userInfo = users.findUser(socket.id);
-    if (userInfo) {
-      socket.broadcast.emit("message", {
-        username: "李靖",
-        msg: `${username} has stepped out WeChat Room`,
-      });
-    }
+    //用户进来的时候 ，当前的用户收到  欢迎加入聊天室
+    socket.emit("message", {});
   });
 
   socket.on("chatMessage", (data) => {
