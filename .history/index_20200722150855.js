@@ -4,7 +4,7 @@ const Koa = require("koa");
 const serve = require("koa-static");
 
 const app = new Koa();
-app.use(serve("./static"));
+app.use(serve(__dirname + "./static"));
 const server = http.createServer(app.callback());
 
 const io = require("socket.io")(server);
