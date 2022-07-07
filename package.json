@@ -20,7 +20,7 @@
   "dependencies": {
     "koa": "^2.13.0",
     "koa-static": "^5.0.0",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "nodemon": "^2.0.4",
     "socket.io": "^2.3.0"
   }
